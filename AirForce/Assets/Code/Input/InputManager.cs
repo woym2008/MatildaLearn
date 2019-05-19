@@ -12,6 +12,7 @@ public enum DirectKey
 }
 
 public delegate void DirectKeyPress(DirectKey dir);
+public delegate void ConfirmKeyPress();
 
 public class InputManager
 {
@@ -33,8 +34,10 @@ public class InputManager
     public KeyCode UpKey = KeyCode.W;
     public KeyCode DownKey = KeyCode.S;
 
+    public KeyCode ConfirmKey = KeyCode.K;
     //定义一些按键事件
     public event DirectKeyPress onDirectKeyPress;
+    public event ConfirmKeyPress onConfirmKeyPress;
 
     public void InitInputManager()
     {
@@ -64,6 +67,14 @@ public class InputManager
         if(dir != DirectKey.Null)
         {
             onDirectKeyPress(dir);
+        }
+
+        if(Input.GetKey(ConfirmKey))
+        {
+            if(onConfirmKeyPress != null)
+            {
+                onConfirmKeyPress();
+            }
         }
     }
 }

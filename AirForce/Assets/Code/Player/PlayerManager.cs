@@ -68,6 +68,8 @@ public class PlayerManager
         _curAppearTime = 0;
 
         InputManager.getInstance.onDirectKeyPress += new DirectKeyPress(OnInputDirectKey);
+
+        InputManager.getInstance.onConfirmKeyPress += new ConfirmKeyPress(OnInputFire);
     }
 
     public void Update()
@@ -107,6 +109,14 @@ public class PlayerManager
                 }
                 break;
         }
+
+        if(_plane != null)
+        {
+            if(!_plane.IsAlive())
+            {
+                PlaneDestory();
+            }
+        }
     }
 
     //启动玩家
@@ -127,9 +137,9 @@ public class PlayerManager
     //飞机击毁
     private void PlaneDestory()
     {
-        GameObject.Destroy(_planePrefab);
+        GameObject.Destroy(_plane.gameObject);
 
-        _planePrefab = null;
+        _plane = null;
 
         _state = PlayerState.Die;
 
@@ -175,6 +185,14 @@ public class PlayerManager
                     }
                     break;
             }
+        }
+    }
+
+    private void OnInputFire()
+    {
+        if(_plane != null)
+        {
+            _plane.Fire();
         }
     }
 }

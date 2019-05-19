@@ -78,6 +78,10 @@ public class EnemyManager
                 {
                     _destroyList.Add(enemy);
                 }
+                else if(!enemy.IsAlive())
+                {
+                    _destroyList.Add(enemy);
+                }
             }
             //-------------------------------------------------
             foreach (var destroyenemy in _destroyList)

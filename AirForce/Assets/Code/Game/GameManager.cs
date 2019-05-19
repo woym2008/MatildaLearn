@@ -31,6 +31,7 @@ public class GameManager
         InputManager.getInstance.InitInputManager();
         EnemyManager.getInstance.InitEnemyManager();
         PlayerManager.getInstance.InitPlayerManager();
+        BulletManager.getInstance.InitBulletManager();
     }
     
     public void GameStart()
@@ -53,5 +54,6 @@ public class GameManager
         InputManager.getInstance.Update();
         PlayerManager.getInstance.Update();
         EnemyManager.getInstance.Update();
+        //BulletManager.getInstance.Update();
     }
 }
