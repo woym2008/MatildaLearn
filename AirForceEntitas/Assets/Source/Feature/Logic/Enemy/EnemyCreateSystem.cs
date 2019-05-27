@@ -23,6 +23,8 @@ public class EnemyCreateSystem : ReactiveSystem<GameEntity>
         {
             e.AddAsset("Enemy", 3);
             e.AddPosition(pos);
+
+            e.AddEnemyState(EnemyState.Alive);
         }
 
     }

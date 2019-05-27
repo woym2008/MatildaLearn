@@ -34,6 +34,11 @@ public class EnemyUpdateSystem : IExecuteSystem
             {
                 e.view.Value.Position = e.position.value;
             }
+
+            if(e.enemyState.state == EnemyState.Die)
+            {
+                e.isDestroyed = true;
+            }
         }
 
         _colddowm -= Time.deltaTime;

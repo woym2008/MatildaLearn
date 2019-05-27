@@ -14,6 +14,7 @@ public class LogicSystem : Feature
         Add(new PlayerUpdateSystem(contexts, services));
 
         Add(new EnemyCreateSystem(contexts, services));
+        Add(new EnemyInitSystem(contexts));
         Add(new EnemyUpdateSystem(contexts));
     }
 }

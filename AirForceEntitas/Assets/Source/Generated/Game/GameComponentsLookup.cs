@@ -14,16 +14,17 @@ public static class GameComponentsLookup {
     public const int Destroyed = 3;
     public const int DestroyedListener = 4;
     public const int Enemy = 5;
-    public const int GameState = 6;
-    public const int PlayerBorn = 7;
-    public const int Player = 8;
-    public const int PlayerData = 9;
-    public const int PlayerState = 10;
-    public const int Position = 11;
-    public const int UI = 12;
-    public const int View = 13;
+    public const int EnemyState = 6;
+    public const int GameState = 7;
+    public const int PlayerBorn = 8;
+    public const int Player = 9;
+    public const int PlayerData = 10;
+    public const int PlayerState = 11;
+    public const int Position = 12;
+    public const int UI = 13;
+    public const int View = 14;
 
-    public const int TotalComponents = 14;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -32,6 +33,7 @@ public static class GameComponentsLookup {
         "Destroyed",
         "DestroyedListener",
         "Enemy",
+        "EnemyState",
         "GameState",
         "PlayerBorn",
         "Player",
@@ -49,6 +51,7 @@ public static class GameComponentsLookup {
         typeof(DestroyedComponent),
         typeof(DestroyedListenerComponent),
         typeof(EnemyComponent),
+        typeof(EnemyStateComponent),
         typeof(GameStateComponent),
         typeof(PlayerBornComponent),
         typeof(PlayerComponent),
