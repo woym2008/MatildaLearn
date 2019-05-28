@@ -12,22 +12,22 @@ public partial class ConfigContext {
     public PlaneConfigComponent planeConfig { get { return planeConfigEntity.planeConfig; } }
     public bool hasPlaneConfig { get { return planeConfigEntity != null; } }
 
-    public ConfigEntity SetPlaneConfig(int newPlaneBornTime, UnityEngine.Vector2 newBornPos, UnityEngine.Vector2 newStartPos, float newSpeed) {
+    public ConfigEntity SetPlaneConfig(int newPlaneBornTime, UnityEngine.Vector2 newBornPos, UnityEngine.Vector2 newStartPos, float newSpeed, float newBulletspeed) {
         if (hasPlaneConfig) {
             throw new Entitas.EntitasException("Could not set PlaneConfig!\n" + this + " already has an entity with PlaneConfigComponent!",
                 "You should check if the context already has a planeConfigEntity before setting it or use context.ReplacePlaneConfig().");
         }
         var entity = CreateEntity();
-        entity.AddPlaneConfig(newPlaneBornTime, newBornPos, newStartPos, newSpeed);
+        entity.AddPlaneConfig(newPlaneBornTime, newBornPos, newStartPos, newSpeed, newBulletspeed);
         return entity;
     }
 
-    public void ReplacePlaneConfig(int newPlaneBornTime, UnityEngine.Vector2 newBornPos, UnityEngine.Vector2 newStartPos, float newSpeed) {
+    public void ReplacePlaneConfig(int newPlaneBornTime, UnityEngine.Vector2 newBornPos, UnityEngine.Vector2 newStartPos, float newSpeed, float newBulletspeed) {
         var entity = planeConfigEntity;
         if (entity == null) {
-            entity = SetPlaneConfig(newPlaneBornTime, newBornPos, newStartPos, newSpeed);
+            entity = SetPlaneConfig(newPlaneBornTime, newBornPos, newStartPos, newSpeed, newBulletspeed);
         } else {
-            entity.ReplacePlaneConfig(newPlaneBornTime, newBornPos, newStartPos, newSpeed);
+            entity.ReplacePlaneConfig(newPlaneBornTime, newBornPos, newStartPos, newSpeed, newBulletspeed);
         }
     }
 
@@ -49,23 +49,25 @@ public partial class ConfigEntity {
     public PlaneConfigComponent planeConfig { get { return (PlaneConfigComponent)GetComponent(ConfigComponentsLookup.PlaneConfig); } }
     public bool hasPlaneConfig { get { return HasComponent(ConfigComponentsLookup.PlaneConfig); } }
 
-    public void AddPlaneConfig(int newPlaneBornTime, UnityEngine.Vector2 newBornPos, UnityEngine.Vector2 newStartPos, float newSpeed) {
+    public void AddPlaneConfig(int newPlaneBornTime, UnityEngine.Vector2 newBornPos, UnityEngine.Vector2 newStartPos, float newSpeed, float newBulletspeed) {
         var index = ConfigComponentsLookup.PlaneConfig;
         var component = (PlaneConfigComponent)CreateComponent(index, typeof(PlaneConfigComponent));
         component.planeBornTime = newPlaneBornTime;
         component.bornPos = newBornPos;
         component.startPos = newStartPos;
         component.speed = newSpeed;
+        component.bulletspeed = newBulletspeed;
         AddComponent(index, component);
     }
 
-    public void ReplacePlaneConfig(int newPlaneBornTime, UnityEngine.Vector2 newBornPos, UnityEngine.Vector2 newStartPos, float newSpeed) {
+    public void ReplacePlaneConfig(int newPlaneBornTime, UnityEngine.Vector2 newBornPos, UnityEngine.Vector2 newStartPos, float newSpeed, float newBulletspeed) {
         var index = ConfigComponentsLookup.PlaneConfig;
         var component = (PlaneConfigComponent)CreateComponent(index, typeof(PlaneConfigComponent));
         component.planeBornTime = newPlaneBornTime;
         component.bornPos = newBornPos;
         component.startPos = newStartPos;
         component.speed = newSpeed;
+        component.bulletspeed = newBulletspeed;
         ReplaceComponent(index, component);
     }
 

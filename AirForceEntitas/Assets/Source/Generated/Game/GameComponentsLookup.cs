@@ -10,31 +10,37 @@ public static class GameComponentsLookup {
 
     public const int Asset = 0;
     public const int AssetLoaded = 1;
-    public const int DestoryOnReset = 2;
-    public const int Destroyed = 3;
-    public const int DestroyedListener = 4;
-    public const int Enemy = 5;
-    public const int EnemyState = 6;
-    public const int GameState = 7;
-    public const int PlayerBorn = 8;
-    public const int Player = 9;
-    public const int PlayerData = 10;
-    public const int PlayerState = 11;
-    public const int Position = 12;
-    public const int UI = 13;
-    public const int View = 14;
+    public const int Bullet = 2;
+    public const int BulletState = 3;
+    public const int DestoryOnReset = 4;
+    public const int Destroyed = 5;
+    public const int DestroyedListener = 6;
+    public const int Enemy = 7;
+    public const int EnemyState = 8;
+    public const int GameState = 9;
+    public const int MoveDirect = 10;
+    public const int PlayerBorn = 11;
+    public const int Player = 12;
+    public const int PlayerData = 13;
+    public const int PlayerState = 14;
+    public const int Position = 15;
+    public const int UI = 16;
+    public const int View = 17;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
         "Asset",
         "AssetLoaded",
+        "Bullet",
+        "BulletState",
         "DestoryOnReset",
         "Destroyed",
         "DestroyedListener",
         "Enemy",
         "EnemyState",
         "GameState",
+        "MoveDirect",
         "PlayerBorn",
         "Player",
         "PlayerData",
@@ -47,12 +53,15 @@ public static class GameComponentsLookup {
     public static readonly System.Type[] componentTypes = {
         typeof(AssetComponent),
         typeof(AssetLoadedComponent),
+        typeof(BulletComponent),
+        typeof(BulletStateComponent),
         typeof(DestoryOnResetComponent),
         typeof(DestroyedComponent),
         typeof(DestroyedListenerComponent),
         typeof(EnemyComponent),
         typeof(EnemyStateComponent),
         typeof(GameStateComponent),
+        typeof(MoveDirectComponent),
         typeof(PlayerBornComponent),
         typeof(PlayerComponent),
         typeof(PlayerData),

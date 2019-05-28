@@ -15,6 +15,6 @@ public class PlaneConfigComponent : IComponent
 
     public float speed;
 
-
+    public float bulletspeed;
 
 }

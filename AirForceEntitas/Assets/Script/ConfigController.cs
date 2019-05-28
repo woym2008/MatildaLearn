@@ -11,6 +11,8 @@ public class ConfigController : MonoBehaviour
 
     public float PlayerSpeed = 1;
 
+    public float BulletSpeed = 2;
+
     public Transform EnemyStartPoint_L;
     public Transform EnemyStartPoint_R;
 
@@ -25,7 +27,8 @@ public class ConfigController : MonoBehaviour
             PlaneLife,
             BornPoint.position,
             StartPoint.position,
-            PlayerSpeed);
+            PlayerSpeed,
+            BulletSpeed);
 
         contexts.config.ReplaceEnemyConfig(
             EnemyStartPoint_L.position,

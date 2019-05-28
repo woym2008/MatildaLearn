@@ -9,6 +9,10 @@ public class PlayerUpdateSystem : IExecuteSystem
     IGroup<GameEntity> _players;
     Vector2 updir = new Vector2(0,1);
     Vector2 leftdir = new Vector2(1,0);
+
+    bool _coolOver = true;
+    float _coolDown;
+    float _maxCoolDown = 1;
     public PlayerUpdateSystem(Contexts contexts, Services services)
     {
         _players = contexts.game.GetGroup(GameMatcher.Player);
@@ -67,6 +71,28 @@ public class PlayerUpdateSystem : IExecuteSystem
                 p.ReplacePosition(
                 p.position.value + offset
                     );
+
+                _coolDown -= Time.deltaTime;
+                if (_coolDown < 0)
+                {
+                    _coolOver = true;
+                }
+
+                var key = _services.InputService.KeyData;
+                if(key.isPressed(InputData.KeyState.Enter) && _coolOver)
+                {
+                    var e = _contexts.game.CreateEntity();
+                    e.AddBullet(true);
+                    e.AddBulletState(BulletState.Run);
+                    e.AddAsset("Bullet",1);
+                    e.AddPosition(p.position.value);
+                    e.AddMoveDirect(new Vector2(0,1));
+
+                    _coolOver = false;
+                    _coolDown = _maxCoolDown;
+                }
+
+
             }
             if(p.hasView)
             {
