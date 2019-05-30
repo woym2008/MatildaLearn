@@ -19,6 +19,9 @@ public class ConfigController : MonoBehaviour
     public float MaxEnemySpeed = 1;
     public float MinEnemySpeed = 0.5f;
 
+    public Transform ColiderLU;
+    public Transform ColiderRD;
+
     private void Awake()
     {
         var contexts = Contexts.sharedInstance;
@@ -35,6 +38,11 @@ public class ConfigController : MonoBehaviour
             EnemyStartPoint_R.position,
             MaxEnemySpeed,
             MinEnemySpeed
+        );
+
+        contexts.config.ReplaceSceneColider(
+            ColiderLU.position,
+            ColiderRD.position
         );
     }
 

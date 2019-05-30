@@ -10,16 +10,19 @@ public static class ConfigComponentsLookup {
 
     public const int EnemyConfig = 0;
     public const int PlaneConfig = 1;
+    public const int SceneColider = 2;
 
-    public const int TotalComponents = 2;
+    public const int TotalComponents = 3;
 
     public static readonly string[] componentNames = {
         "EnemyConfig",
-        "PlaneConfig"
+        "PlaneConfig",
+        "SceneColider"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(EnemyConfigComponent),
-        typeof(PlaneConfigComponent)
+        typeof(PlaneConfigComponent),
+        typeof(SceneColiderComponent)
     };
 }

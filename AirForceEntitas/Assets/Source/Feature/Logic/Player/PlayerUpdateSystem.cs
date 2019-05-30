@@ -68,8 +68,18 @@ public class PlayerUpdateSystem : IExecuteSystem
                 {
                     offset += Time.deltaTime * leftdir * speed;
                 }
+
+                var scenecollider = _contexts.config.sceneColider;
+
+                var pos = p.position.value + offset;
+                //if (pos.x > scenecollider.rd.x) ;
+                pos.x = pos.x > scenecollider.rd.x ? scenecollider.rd.x : pos.x;
+                pos.x = pos.x < scenecollider.lu.x ? scenecollider.lu.x : pos.x;
+                pos.y = pos.y > scenecollider.lu.y ? scenecollider.lu.y : pos.y;
+                pos.y = pos.y < scenecollider.rd.y ? scenecollider.rd.y : pos.y;
+
                 p.ReplacePosition(
-                p.position.value + offset
+                pos
                     );
 
                 _coolDown -= Time.deltaTime;
