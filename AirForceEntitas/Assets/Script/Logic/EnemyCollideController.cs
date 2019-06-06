@@ -24,7 +24,8 @@ public class EnemyCollideController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "EnemyDie")
+        if(collision.gameObject.tag == "EnemyDie" ||
+            collision.gameObject.tag == "Bullet")
         {
             _entity.ReplaceEnemyState(EnemyState.Die);
         }
